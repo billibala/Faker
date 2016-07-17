@@ -29,6 +29,6 @@ public class Uuid {
         - returns: Returns a random version 4 UUID.
     */
     public class func uuid() -> String {
-        return NSUUID().UUIDString.lowercaseString
+        return NSUUID().uuidString.lowercased()
     }
 }

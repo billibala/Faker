@@ -79,7 +79,7 @@ public class Lorem {
     
         - returns: Returns an array of `count` words.
     */
-    public class func words(count : Int = 3) -> [String] {
+    public class func words(_ count : Int = 3) -> [String] {
         return wordList.random(count)
     }
     
@@ -90,8 +90,8 @@ public class Lorem {
     
         - returns: Returns a string of `count` words.
     */
-    public class func words(count : Int = 3) -> String {
-        return words(count).joinWithSeparator(" ")
+    public class func words(_ count : Int = 3) -> String {
+        return words(count).joined(separator: " ")
     }
     
     /**
@@ -103,7 +103,7 @@ public class Lorem {
 
         - returns:
     */
-    public class func sentence(nbWords : Int = 6, variable : Bool = true) -> String {
+    public class func sentence(_ nbWords : Int = 6, variable : Bool = true) -> String {
         if nbWords <= 0 {
             return ""
         }
@@ -120,7 +120,7 @@ public class Lorem {
         
         - returns: Returns an array of random sentences.
     */
-    public class func sentences(nbSentences : Int = 3) -> [String] {
+    public class func sentences(_ nbSentences : Int = 3) -> [String] {
         return (0..<nbSentences).map { _ in sentence() }
     }
     
@@ -131,8 +131,8 @@ public class Lorem {
 
         - returns: Returns a string of random sentences.
     */
-    public class func sentences(nbSentences : Int = 3) -> String {
-        return sentences(nbSentences).joinWithSeparator(" ")
+    public class func sentences(_ nbSentences : Int = 3) -> String {
+        return sentences(nbSentences).joined(separator: " ")
     }
     
     /**
@@ -145,12 +145,12 @@ public class Lorem {
 
         - returns: Returns a paragraph with `nbSentences` random sentences.
     */
-    public class func paragraph(nbSentences : Int = 3, variable : Bool = true) -> String {
+    public class func paragraph(_ nbSentences : Int = 3, variable : Bool = true) -> String {
         if nbSentences <= 0 {
             return ""
         }
         
-        return sentences(variable ? nbSentences.randomize(40) : nbSentences).joinWithSeparator(" ")
+        return sentences(variable ? nbSentences.randomize(40) : nbSentences).joined(separator: " ")
     }
     
     /**
@@ -160,7 +160,7 @@ public class Lorem {
 
         - returns: Returns an array of `nbParagraphs` paragraphs.
     */
-    public class func paragraphs(nbParagraphs : Int = 3) -> [String] {
+    public class func paragraphs(_ nbParagraphs : Int = 3) -> [String] {
         return (0..<nbParagraphs).map { _ in paragraph() }
     }
     
@@ -171,8 +171,8 @@ public class Lorem {
 
         - returns: Returns a string of random paragraphs.
     */
-    public class func paragraphs(nbParagraphs : Int = 3) -> String {
-        return paragraphs(nbParagraphs).joinWithSeparator("\n\n")
+    public class func paragraphs(_ nbParagraphs : Int = 3) -> String {
+        return paragraphs(nbParagraphs).joined(separator: "\n\n")
     }
     
     /**
@@ -183,7 +183,7 @@ public class Lorem {
 
         - returns: Returns a string of at most `maxNbChars` characters.
     */
-    public class func text(maxNbChars : Int = 200) -> String {
+    public class func text(_ maxNbChars : Int = 200) -> String {
         var result : [String] = []
         
         if maxNbChars < 5 {
@@ -226,14 +226,14 @@ public class Lorem {
             }
         }
         
-        return result.joinWithSeparator("")
+        return result.joined(separator: "")
     }
 }
 
 extension String {
     var firstCapitalized : String {
         var string = self
-        string.replaceRange(string.startIndex...string.startIndex, with: String(string[string.startIndex]).capitalizedString)
+        string.replaceSubrange(string.startIndex...string.startIndex, with: String(string[string.startIndex]).capitalized)
         
         return string
     }
