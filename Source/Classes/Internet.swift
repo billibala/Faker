@@ -152,7 +152,7 @@ public class Internet {
     public class func username() -> String {
         let result = dataProvider().usernameFormats().random()!
 
-        return result.numerify().lexify().lowercaseString.stringByReplacingOccurrencesOfString(" ", withString: ".")
+        return result.numerify().lexify().lowercased().replacingOccurrences(of: " ", with: ".")
     }
     
     /**
@@ -165,8 +165,8 @@ public class Internet {
         - returns: Returns a password of at least `minLength` and at most
                    `maxLength` characters.
     */
-    public class func password(minLength : Int = 6, maxLength : Int = 20) -> String {
-        let format = Array(count: Int.random(minLength, max: maxLength), repeatedValue: "*").joinWithSeparator("")
+    public class func password(_ minLength : Int = 6, maxLength : Int = 20) -> String {
+        let format = Array(repeating: "*", count: Int.random(minLength, max: maxLength)).joined(separator: "")
         
         return format.lexify()
     }
@@ -186,7 +186,7 @@ public class Internet {
         - returns: Returns a random domain word.
     */
     public class func domainWord() -> String {
-        return "\(Person.lastName())".lowercaseString.stringByReplacingOccurrencesOfString(" ", withString: "-")
+        return "\(Person.lastName())".lowercased().replacingOccurrences(of: " ", with: "-")
     }
     
     /**
@@ -216,12 +216,12 @@ public class Internet {
 
         - returns: Returns a random slug of `nbWords` words.
     */
-    public class func slug(nbWords : Int = 6, variable : Bool = true) -> String {
+    public class func slug(_ nbWords : Int = 6, variable : Bool = true) -> String {
         if nbWords <= 0 {
             return ""
         }
         
-        return Lorem.words(variable ? nbWords.randomize(40) : nbWords).joinWithSeparator("-").lowercaseString
+        return Lorem.words(variable ? nbWords.randomize(40) : nbWords).joined(separator: "-").lowercased()
     }
     
     /**
@@ -235,7 +235,7 @@ public class Internet {
             Int.random(0, max: 255),
             Int.random(0, max: 255),
             Int.random(0, max: 255)
-        ].map(String.init).joinWithSeparator(".")
+        ].map(String.init).joined(separator: ".")
     }
     
     /**
@@ -246,7 +246,7 @@ public class Internet {
     public class func ipv6() -> String {
         let components = (0..<8).map { _ in Int.random(0, max: 65535) }
         
-        return components.map({ String(format: "%04x", arguments: [ $0 ]) }).joinWithSeparator(":")
+        return components.map({ String(format: "%04x", arguments: [ $0 ]) }).joined(separator: ":")
     }
     
     /**
@@ -266,7 +266,7 @@ public class Internet {
             components = (0..<2).map({ _ in Int.random(0, max: 255) }).map(String.init)
         }
         
-        return prefix + components.joinWithSeparator(".")
+        return prefix + components.joined(separator: ".")
     }
     
     /**
@@ -277,7 +277,7 @@ public class Internet {
     public class func mac() -> String {
         let components = (0..<6).map { _ in Int.random(0, max: 255) }
         
-        return components.map({ String(format: "%02X", arguments: [ $0 ]) }).joinWithSeparator(":")
+        return components.map({ String(format: "%02X", arguments: [ $0 ]) }).joined(separator: ":")
     }
     
     private class func dataProvider() -> Provider {

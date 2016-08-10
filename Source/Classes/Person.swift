@@ -25,11 +25,11 @@ import Foundation
 public class Person {
     // MARK: Enums
     public enum Gender {
-        case Male
-        case Female
+        case male
+        case female
         
         static func sample() -> Gender {
-            return [Gender.Male,Gender.Female].random()!
+            return [Gender.male,Gender.female].random()!
         }
     }
     
@@ -100,10 +100,10 @@ public class Person {
 
         - returns: Returns a random name for a person of the given gender.
     */
-    public class func name(gender : Gender? = nil) -> String {
+    public class func name(_ gender : Gender? = nil) -> String {
         switch gender ?? Gender.sample() {
-        case .Male: return dataProvider().maleNameFormats().random()!
-        case .Female: return dataProvider().femaleNameFormats().random()!
+        case .male: return dataProvider().maleNameFormats().random()!
+        case .female: return dataProvider().femaleNameFormats().random()!
         }
     }
     
@@ -115,10 +115,10 @@ public class Person {
 
         - returns: Returns a random first name for a person of the given gender.
     */
-    public class func firstName(gender : Gender? = nil) -> String {
+    public class func firstName(_ gender : Gender? = nil) -> String {
         switch gender ?? Gender.sample() {
-        case .Male: return maleFirstName()
-        case .Female: return femaleFirstName()
+        case .male: return maleFirstName()
+        case .female: return femaleFirstName()
         }
     }
     
@@ -138,10 +138,10 @@ public class Person {
         
         - returns: Returns a random title for a person of the given gender.
     */
-    public class func title(gender : Gender? = nil) -> String {
+    public class func title(_ gender : Gender? = nil) -> String {
         switch gender ?? Gender.sample() {
-        case .Male: return maleTitle()
-        case .Female: return femaleTitle()
+        case .male: return maleTitle()
+        case .female: return femaleTitle()
         }
     }
     
