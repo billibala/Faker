@@ -22,8 +22,8 @@
 
 import Foundation
 
-public class Configuration {
-    public class func localize(_ locale : NSLocale? = nil) {
+open class Configuration {
+    open class func localize(_ locale : NSLocale? = nil) {
         let localization = locale != nil ? locale!.localeIdentifier : NSLocale.current.identifier
         
         switch localization {

@@ -22,7 +22,7 @@
 
 import Foundation
 
-public class Person {
+open class Person {
     // MARK: Enums
     public enum Gender {
         case male
@@ -35,61 +35,61 @@ public class Person {
     
     // MARK: Provider
     
-    public class Provider {
+    open class Provider {
         public init() {
             // noop
         }
         
-        public func titleFormats() -> [String] {
+        open func titleFormats() -> [String] {
             return [
                 Person.maleTitle(),
                 Person.femaleTitle(),
             ]
         }
         
-        public func firstNameFormats() -> [String] {
+        open func firstNameFormats() -> [String] {
             return [
                 Person.maleFirstName(),
                 Person.femaleFirstName(),
             ]
         }
         
-        public func maleNameFormats() -> [String] {
+        open func maleNameFormats() -> [String] {
             return [
                 "\(Person.maleFirstName()) \(Person.lastName())",
             ]
         }
         
-        public func femaleNameFormats() -> [String] {
+        open func femaleNameFormats() -> [String] {
             return [
                 "\(Person.femaleFirstName()) \(Person.lastName())"
             ]
         }
         
-        public func lastNames() -> [String] {
+        open func lastNames() -> [String] {
             return [ "Doe" ]
         }
         
-        public func maleFirstNames() -> [String] {
+        open func maleFirstNames() -> [String] {
             return [ "John" ]
         }
         
-        public func maleTitles() -> [String] {
+        open func maleTitles() -> [String] {
             return [ "Mr.", "Dr.", "Prof." ]
         }
         
-        public func femaleFirstNames() -> [String] {
+        open func femaleFirstNames() -> [String] {
             return [ "Jane" ]
         }
         
-        public func femaleTitles() -> [String] {
+        open func femaleTitles() -> [String] {
             return [ "Mrs.", "Ms.", "Miss", "Dr.", "Prof." ]
         }
     }
     
     // MARK: Variables
     
-    public static var provider : Provider?
+    open static var provider : Provider?
     
     // MARK: Generators
     
@@ -100,7 +100,7 @@ public class Person {
 
         - returns: Returns a random name for a person of the given gender.
     */
-    public class func name(_ gender : Gender? = nil) -> String {
+    open class func name(_ gender : Gender? = nil) -> String {
         switch gender ?? Gender.sample() {
         case .male: return dataProvider().maleNameFormats().random()!
         case .female: return dataProvider().femaleNameFormats().random()!
@@ -115,7 +115,7 @@ public class Person {
 
         - returns: Returns a random first name for a person of the given gender.
     */
-    public class func firstName(_ gender : Gender? = nil) -> String {
+    open class func firstName(_ gender : Gender? = nil) -> String {
         switch gender ?? Gender.sample() {
         case .male: return maleFirstName()
         case .female: return femaleFirstName()
@@ -127,7 +127,7 @@ public class Person {
 
         - returns: Returns a random last name.
     */
-    public class func lastName() -> String {
+    open class func lastName() -> String {
         return dataProvider().lastNames().random()!
     }
     
@@ -138,7 +138,7 @@ public class Person {
         
         - returns: Returns a random title for a person of the given gender.
     */
-    public class func title(_ gender : Gender? = nil) -> String {
+    open class func title(_ gender : Gender? = nil) -> String {
         switch gender ?? Gender.sample() {
         case .male: return maleTitle()
         case .female: return femaleTitle()
@@ -150,7 +150,7 @@ public class Person {
 
         - returns: Returns a random title for a male person.
     */
-    public class func maleTitle() -> String {
+    open class func maleTitle() -> String {
         return dataProvider().maleTitles().random()!
     }
     
@@ -159,7 +159,7 @@ public class Person {
 
         - returns: Returns a random male first name.
     */
-    public class func maleFirstName() -> String {
+    open class func maleFirstName() -> String {
         return dataProvider().maleFirstNames().random()!
     }
     
@@ -168,7 +168,7 @@ public class Person {
 
         - returns: Returns a random title for a female person.
     */
-    public class func femaleTitle() -> String {
+    open class func femaleTitle() -> String {
         return dataProvider().femaleTitles().random()!
     }
     
@@ -177,11 +177,11 @@ public class Person {
     
         - returns: Returns a random female first name.
     */
-    public class func femaleFirstName() -> String {
+    open class func femaleFirstName() -> String {
         return dataProvider().femaleFirstNames().random()!
     }
     
-    private class func dataProvider() -> Provider {
+    fileprivate class func dataProvider() -> Provider {
         return provider ?? Provider()
     }
 }

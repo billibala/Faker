@@ -71,7 +71,7 @@ private extension UInt {
         
         if min == UInt.min && max == UInt.max {
             var result : UInt = 0
-            arc4random_buf(&result, sizeofValue(result))
+            arc4random_buf(&result, MemoryLayout<UInt>.size)
             
             return result
         } else {
@@ -80,7 +80,7 @@ private extension UInt {
             var result : UInt = 0
             
             repeat {
-                arc4random_buf(&result, sizeofValue(result))
+                arc4random_buf(&result, MemoryLayout<UInt>.size)
             } while result >= limit
             
             result = result % range
