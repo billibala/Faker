@@ -67,11 +67,45 @@ open class Person {
         }
         
         open func lastNames() -> [String] {
-            return [ "Doe" ]
+            return [ "Doe",
+                     "Mund",
+                     "Folmar",
+                     "Batts",
+                     "Halbrook",
+                     "Hollmann",
+                     "Delatorre",
+                     "Rueda",
+                     "Lombardi",
+                     "Martine",
+                     "Killen",
+                     "Storrs",
+                     "Gupton"
+			]
         }
         
         open func maleFirstNames() -> [String] {
-            return [ "John" ]
+			return [ "John",
+			         "Brett",
+				"Hershel",
+				"Taylor",
+				"Jacques",
+				"Elmer",
+				"Ray",
+				"Sylvester",
+				"Darell",
+				"Edmundo",
+				"Gaston",
+				"Ed",
+				"Valentin",
+				"Chauncey",
+				"Rosendo",
+				"Bernardo",
+				"Keneth",
+				"Orlando",
+				"Tyree  ",
+				"Willy",
+				"James"
+			]
         }
         
         open func maleTitles() -> [String] {
@@ -79,7 +113,28 @@ open class Person {
         }
         
         open func femaleFirstNames() -> [String] {
-            return [ "Jane" ]
+            return [ "Jane",
+                     "Shannan",
+				"Ina",
+				"Julee",
+				"Mikaela",
+				"Franchesca",
+				"Concetta",
+				"Jasmine",
+				"Bettina",
+				"Wenona",
+				"Cherish",
+				"Meri",
+				"Chana",
+				"Christina",
+				"Davina",
+				"Jesusa",
+				"Kellie",
+				"Brandee",
+				"Deidra",
+				"Vita",
+				"Leanna"
+			]
         }
         
         open func femaleTitles() -> [String] {
